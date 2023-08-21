@@ -3,7 +3,7 @@
 // @namespace   wtflm
 // @include     *
 // @grant       none
-// @version     1.0
+// @version     1.1.20230821
 // @author      wtflm
 // @description Concrete CMS Admin UI tweaks
 // ==/UserScript==
