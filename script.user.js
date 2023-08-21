@@ -39,9 +39,9 @@ document.head && document.head.appendChild(style);
 const composer = document.getElementById("ccm-panel-detail-page-composer");
 if (composer) {
 	let page_type = document.querySelector('.ccm-page').className.match(/page\-type(?:\-\w+)+/);
- 	page_type = page_type.replace(/^page\-type/, ""),
- 	page_type = page_type.replace("-", "_");
- 	composer.querySelector(`h3`).textContent += ` (${page_type})`;
+	page_type = page_type.replace(/^page\-type/, ""),
+	page_type = page_type.replace("-", "_");
+	composer.querySelector(`h3`).textContent += ` (${page_type})`;
 }
 
 
@@ -49,15 +49,15 @@ if (composer) {
 const site = document.querySelector(".ccm-page");
 if (site && !site.classList.contains("is-logged-in")) {
 	let CCM_APPLICATION_URL = window?.CCM_APPLICATION_URL ?? "";
- 	fetch(`${CCM_APPLICATION_URL}/index.php/login`)
- 	.then(response => response.text())
- 	.then(html => {
-	 	const parser = new DOMParser();
-	 	const loginPage = parser.parseFromString(html, "text/html");
+	fetch(`${CCM_APPLICATION_URL}/index.php/login`)
+	.then(response => response.text())
+	.then(html => {
+		const parser = new DOMParser();
+		const loginPage = parser.parseFromString(html, "text/html");
 		if (loginPage.querySelector(`form[action*="login/authenticate/concrete"]`)) {
 			console.log("Concrete CMS login page found.");
-		 	const loginLink = document.createElement("a");
-		 	loginLink.innerHTML = `<img width="24" alt="Login" src="${CCM_APPLICATION_URL}/concrete/images/logo.svg"/>`;
+			const loginLink = document.createElement("a");
+			loginLink.innerHTML = `<img width="24" alt="Login" src="${CCM_APPLICATION_URL}/concrete/images/logo.svg"/>`;
 			loginLink.href = `${CCM_APPLICATION_URL}/index.php/login`;
 			loginLink.title = "Login";
 			loginLink.style.position = "fixed";
@@ -76,11 +76,11 @@ const features = {
 		enabled: true,
 		code: function() {
 			let links = document.querySelectorAll(`.code-block .code-link a`);
-		 	if (!links.length) return false;
+			if (!links.length) return false;
 			console.log(links);
 			links.forEach(el => {
 				el.addEventListener("click", ev => {
-				 	ev.target.parentElement.parentElement.nextElementSibling.style.removeProperty("display");
+					ev.target.parentElement.parentElement.nextElementSibling.style.removeProperty("display");
 					ev.target.parentElement.parentElement.remove();
 				});
 			});
@@ -138,24 +138,24 @@ const features = {
 		description: "Make the Translate Site Interface Original String field more easily copyable",
 		enabled: true,
 		code: function() {
-		 	function fetchTranslation(ev) {
+			function fetchTranslation(ev) {
 				if (!window.ccmgtwin) {
 					ev.preventDefault();
-			 		window.ccmgtwin = window.open(ev.target.href, "ccmgtwin", "popup,width=720,height=720");
+					window.ccmgtwin = window.open(ev.target.href, "ccmgtwin", "popup,width=720,height=720");
 				}
 
 			}
 			const interface = document.getElementById("ccm-translator-interface");
-		 	let mo = new MutationObserver(() => {
+			let mo = new MutationObserver(() => {
 				mo.disconnect();
-			 	let translations = document.querySelector(`.ccm-translator-col-original`);
-			 	let original;
-			 	let gtLink;
+				let translations = document.querySelector(`.ccm-translator-col-original`);
+				let original;
+				let gtLink;
 				let dirty = document.querySelector(`#ccm-dashboard-content-regular script`);
-			 	if (!dirty) return false;
+				if (!dirty) return false;
 				let offset = dirty.textContent.search(/export_translations\\\//);
-			 	let targetLanguage = dirty.textContent.slice(offset).match(/(?<=\\\/)\w\w/);
-			 	translations.addEventListener("click", ev => {
+				let targetLanguage = dirty.textContent.slice(offset).match(/(?<=\\\/)\w\w/);
+				translations.addEventListener("click", ev => {
 					original = document.querySelector(`.ccm-translator-original`);
 					if (!original) return false;
 					let input = document.createElement("input");
@@ -165,19 +165,19 @@ const features = {
 					input.className = "form-control";
 					original.parentElement.appendChild(input);
 					gtLink = document.createElement("a");
-				 	gtLink.style.float = "right";
-				 	gtLink.textContent = "Google";
-				 	gtLink.target = "ccmgtwin";
-				 	gtLink.href = `https://translate.google.com/?sl=en&tl=${targetLanguage}&text=${input.value}&op=translate`;
-				 	gtLink.addEventListener("click", fetchTranslation);
-				 	let hoaa = original.parentElement.parentElement.querySelector(`.form-group:last-of-type`);
-				 	hoaa.appendChild(gtLink);
+					gtLink.style.float = "right";
+					gtLink.textContent = "Google";
+					gtLink.target = "ccmgtwin";
+					gtLink.href = `https://translate.google.com/?sl=en&tl=${targetLanguage}&text=${input.value}&op=translate`;
+					gtLink.addEventListener("click", fetchTranslation);
+					let hoaa = original.parentElement.parentElement.querySelector(`.form-group:last-of-type`);
+					hoaa.appendChild(gtLink);
 					original.remove();
 
 				});
 			});
 			mo.observe(interface, {childList:true});
-		 	return true;
+			return true;
 		},
 	},
 };
