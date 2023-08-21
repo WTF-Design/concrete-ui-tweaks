@@ -54,7 +54,7 @@ if (site && !site.classList.contains("is-logged-in")) {
  	.then(html => {
 	 	const parser = new DOMParser();
 	 	const loginPage = parser.parseFromString(html, "text/html");
-		if (loginPage.querySelector(`form[action$="login/authenticate/concrete"]`)) {
+		if (loginPage.querySelector(`form[action*="login/authenticate/concrete"]`)) {
 			console.log("Concrete CMS login page found.");
 		 	const loginLink = document.createElement("a");
 		 	loginLink.innerHTML = `<img width="24" alt="Login" src="${CCM_APPLICATION_URL}/concrete/images/logo.svg"/>`;
