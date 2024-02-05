@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name        Concrete UI Tweaks
+// @icon        data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 98 98'%3E%3Crect width='98' height='98' fill='%2319191A' rx='8'/%3E%3Cpath fill='%23FFF' d='M59 81.6a24.3 24.3 0 0 1-8.5 2.6c-8.4.7-16.8-1.5-22.6-7-5.7-6-6.9-14-1.7-20.6 4.8-6.2 12.6-8.8 20.7-9.1 4.5-.2 19.7 1.5 15.2 9-3.6 6-13.5 0-19.2 1.8-6.4 2.1-8.3 10.6-2.2 14.2a14.8 14.8 0 0 0 14.9-.4c6-4 17.1-22.1 24.4-13.5 1.4 1.8-15.5 20-21 23M16.8 34.2c-.6-3 .2-6.4 3.2-6 2.6.4 3.5 4 4 6.7.3 2.1 5.8 17.8 3 17.3-2.7-.6-9.6-14.9-10.2-18m14.4-17.5c4-3.4 6 2.4 6.4 5.3.4 2.8 5.5 24 .1 23.6-4.1-.3-6.9-18.3-7.2-21.1-.4-2.2-1.3-6.1.7-7.8m20.6-6c3.4.7 2.4 7.7 2.4 10.3 0 2.8.3 23.7-4 23-4.6-.6-3.5-21.3-3.7-24.6.1-3.4.6-9.6 5.3-8.7m10.4 15c.3-2 .8-6 3.2-6.9 4.7-1.8 4.6 4 4 6.8-.5 2.7-4.1 23.8-8.9 21.8-3.6-1.5 1-19 1.7-21.7'/%3E%3C/svg%3E
 // @namespace   wtflm
 // @include     *
 // @grant       none
-// @version     1.1.20230821
+// @version     1.2.20240202
 // @author      wtflm
 // @description Concrete CMS Admin UI tweaks
 // ==/UserScript==
@@ -57,7 +58,7 @@ if (site && !site.classList.contains("is-logged-in")) {
 		if (loginPage.querySelector(`form[action*="login/authenticate/concrete"]`)) {
 			console.log("Concrete CMS login page found.");
 			const loginLink = document.createElement("a");
-			loginLink.innerHTML = `<img width="24" alt="Login" src="${CCM_APPLICATION_URL}/concrete/images/logo.svg"/>`;
+			loginLink.innerHTML = `<img width="24" alt="Login" src="${GM.info.script.icon}"/>`;
 			loginLink.href = `${CCM_APPLICATION_URL}/index.php/login`;
 			loginLink.title = "Login";
 			loginLink.style.position = "fixed";
