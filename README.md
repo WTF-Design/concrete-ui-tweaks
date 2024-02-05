@@ -6,7 +6,7 @@ User script for augmenting Concrete CMS development and administration.
   - [Violentmonkey](https://violentmonkey.github.io/) is recommended
 
 ## Installation
-- [Click here](https://github.com/wtflm/concrete-ui-tweaks/raw/main/script.user.js) to install
+- [Click here](https://github.com/wtflm/concrete-ui-tweaks/raw/main/script.user.js) to install/update
 
 ## Features
 - May be documented at some point
