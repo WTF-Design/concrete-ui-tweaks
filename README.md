@@ -12,6 +12,9 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.3.20240312
+- To counteract unwanted password manager auto-fills on user profile pages, restore original field values after a small delay.
+
 1.2.20240202
 - Use an embedded SVG of the Concrete CMS logo as the login button as not to depend on version specific paths. Very old Concrete installs don't have the icon where 8/9 puts it. Also, the SVG doubles as the user script icon for clear visual distinction inside user script host extensions with the added benefit of giving us a more polished look.
 

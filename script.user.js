@@ -4,7 +4,7 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.2.20240202
+// @version     1.3.20240312
 // @author      wtflm
 // @description Concrete CMS Admin UI tweaks
 // ==/UserScript==
@@ -179,6 +179,32 @@ const features = {
 			});
 			mo.observe(interface, {childList:true});
 			return true;
+		},
+	},
+
+	"/account/edit_profile": {
+		description: "Restore profile page after password manager auto-fill",
+		enabled: true,
+		code: function() {
+			setTimeout(() => {
+				document.activeElement.blur();
+				addEventListener("keydown", ev => {
+					if (ev.key == "Tab") {
+						ev.preventDefault();
+						document.querySelector(`[tabindex="1"]`).focus();
+					}
+				}, {once: true});
+			}, 1000);
+			[
+				"uName",
+				"uEmail",
+				"uPasswordCurrent",
+				"uPasswordNew",
+				"uPasswordNewConfirm",
+			].forEach(id => {
+				let field = document.getElementById(id);
+				setTimeout(() => field.value = field.getAttribute("value"), 1500);
+			});
 		},
 	},
 };
