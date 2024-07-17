@@ -12,6 +12,9 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.4.20240717
+- Improve the look and feel of 9.x dev doc TOCs at https://documentation.concretecms.org/9-x/developers/
+
 1.3.20240312
 - To counteract unwanted password manager auto-fills on user profile pages, restore original field values after a small delay.
 

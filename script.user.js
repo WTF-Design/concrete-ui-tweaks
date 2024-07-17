@@ -4,9 +4,9 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.3.20240312
+// @version     1.4.20240717
 // @author      wtflm
-// @description Concrete CMS Admin UI tweaks
+// @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
 
 
@@ -183,7 +183,7 @@ const features = {
 	},
 
 	"/account/edit_profile": {
-		description: "Restore profile page after password manager auto-fill",
+		description: "Restore profile page field values after password manager auto-fill",
 		enabled: true,
 		code: function() {
 			setTimeout(() => {
@@ -205,6 +205,39 @@ const features = {
 				let field = document.getElementById(id);
 				setTimeout(() => field.value = field.getAttribute("value"), 1500);
 			});
+		},
+	},
+
+	"/9-x/developers/": {
+		description: "Concrete 9.x developer documentation TOC polish",
+		enabled: true,
+		code: function() {
+			let style = document.createElement("style");
+			style.textContent = `
+				#toc > .toc-list::before {
+					content: "Table of Contents";
+					display: block;
+					padding: 8px;
+				}
+				.toc-list {
+					padding: 0 8px 8px 8px;
+					font-size: inherit;
+					font-weight: 600;
+					li {
+						padding-left: 2ch;
+						a {
+							padding-left: 0;
+							&:hover {
+								text-decoration: underline;
+							}
+							&::before {
+								content: none;
+							}
+						}
+					}
+				}
+			`;
+			document.head.appendChild(style);
 		},
 	},
 };
