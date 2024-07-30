@@ -4,7 +4,7 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.4.20240717
+// @version     1.5.20240730
 // @author      wtflm
 // @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
@@ -66,6 +66,51 @@ if (site && !site.classList.contains("is-logged-in")) {
 			loginLink.style.zIndex = "999";
 			document.body.appendChild(loginLink);
 		}
+	});
+}
+
+
+// Activate stack frame file names as links to copy their path to the clipboard in an editor friendly format
+if (document.title == "Concrete CMS has encountered an issue.") {
+	let style = document.createElement("style");
+	style.textContent = `
+		.copy {
+			cursor: pointer;
+			transition: filter .2s;
+			position: relative;
+			display: inline-block;
+			&, .delimiter {
+				text-decoration: underline dotted;
+			}
+			&::after {
+				text-decoration: none;
+				content: "";
+				display: block;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				translate: 1.25em -50%;
+				width: 1em;
+				height: 1em;
+				background-color: currentcolor;
+				mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M208 0h124.1A48 48 0 0 1 366 14.1L433.9 82a48 48 0 0 1 14.1 33.9V336c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128h80v64H64v256h192v-32h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z'/%3E%3C/svg%3E");
+				mask-repeat: no-repeat;
+			}
+			&.copied {
+				filter: brightness(2);
+				transition-duration: 0s;
+			}
+		}
+	`;
+	document.head.appendChild(style);
+	document.querySelectorAll(`.frame-file`).forEach(el => {
+		if (el.textContent.trim() == "Arguments") return false;
+		el.classList.add("copy");
+		el.addEventListener("click", ev => {
+			el.classList.add("copied");
+			navigator.clipboard.writeText(el.textContent.trim().replace(/^…?\/(?:app\/)?(.+)/u, "$1").replace(/\d+$/, ""));
+			setTimeout(() => el.classList.remove("copied"), 200);
+		});
 	});
 }
 
