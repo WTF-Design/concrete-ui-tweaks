@@ -303,21 +303,3 @@ Object.keys(features).find(key =>
 	&& features[key].code()
 	&& console.log(`${GM.info.script.name}: ${key} UserScript run.`)
 );
-
-/*
-let devStyle = document.createElement("style");
-devStyle.textContent = `
-	.ccm-toolbar-add::after {
-		content: attr(data-dimensions);
-		position: absolute;
-		top: 0;
-		right: 0;
-		translate: calc(100% + 1em) 50%;
-	}
-`;
-document.head.appendChild(devStyle);
-let dimensions = document.querySelector('.ccm-toolbar-add');
-addEventListener("resize", ev => {
-	dimensions.dataset.dimensions = innerWidth + "x" + innerHeight;
-});
-*/
