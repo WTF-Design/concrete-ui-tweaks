@@ -12,6 +12,9 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.8.0
+- Use semantic versioning and improve login button environment detection
+
 1.7.20240910
 - Switch login icon to a more descriptive one from Google Material Symbols
 

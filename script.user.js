@@ -4,7 +4,7 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.7.20240910
+// @version     1.8.0
 // @author      wtflm
 // @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
@@ -47,9 +47,7 @@ if (composer) {
 
 
 // Show a login button
-const site = document.querySelector(".ccm-page");
-if (site && !site.classList.contains("is-logged-in")) {
-	let CCM_APPLICATION_URL = window?.CCM_APPLICATION_URL ?? "";
+if (window.hasOwnProperty("CCM_APPLICATION_URL") && !window?.CCM_USER_REGISTERED) {
 	fetch(`${CCM_APPLICATION_URL}/index.php/login`)
 	.then(response => response.text())
 	.then(html => {
