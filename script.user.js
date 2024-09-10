@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name        Concrete UI Tweaks
-// @icon        data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 98 98'%3E%3Crect width='98' height='98' fill='%2319191A' rx='8'/%3E%3Cpath fill='%23FFF' d='M59 81.6a24.3 24.3 0 0 1-8.5 2.6c-8.4.7-16.8-1.5-22.6-7-5.7-6-6.9-14-1.7-20.6 4.8-6.2 12.6-8.8 20.7-9.1 4.5-.2 19.7 1.5 15.2 9-3.6 6-13.5 0-19.2 1.8-6.4 2.1-8.3 10.6-2.2 14.2a14.8 14.8 0 0 0 14.9-.4c6-4 17.1-22.1 24.4-13.5 1.4 1.8-15.5 20-21 23M16.8 34.2c-.6-3 .2-6.4 3.2-6 2.6.4 3.5 4 4 6.7.3 2.1 5.8 17.8 3 17.3-2.7-.6-9.6-14.9-10.2-18m14.4-17.5c4-3.4 6 2.4 6.4 5.3.4 2.8 5.5 24 .1 23.6-4.1-.3-6.9-18.3-7.2-21.1-.4-2.2-1.3-6.1.7-7.8m20.6-6c3.4.7 2.4 7.7 2.4 10.3 0 2.8.3 23.7-4 23-4.6-.6-3.5-21.3-3.7-24.6.1-3.4.6-9.6 5.3-8.7m10.4 15c.3-2 .8-6 3.2-6.9 4.7-1.8 4.6 4 4 6.8-.5 2.7-4.1 23.8-8.9 21.8-3.6-1.5 1-19 1.7-21.7'/%3E%3C/svg%3E
+// @name        WTF Concrete UI Tweaks
+// @icon        data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 16 16'%3E%3Cdefs%3E%3ClinearGradient id='gradient' x1='.25' y1='-.1' x2='0' y2='.5'%3E%3Cstop stop-color='%23F7B535' offset='0%25'/%3E%3Cstop stop-color='%23E61D72' offset='100%25'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='8' cy='8' r='8' fill='url(%23gradient)'/%3E%3Cpath stroke-width='.1' stroke='%23fff' fill='%23fff' d='M8.17 9.73q-.31.36-.77.57-.45.2-1.05.2-.54 0-1-.17-.46-.18-.8-.5-.33-.34-.52-.8-.2-.45-.2-1 0-.56.2-1.01.2-.46.54-.78t.8-.5q.47-.17 1-.17.5 0 .97.18.49.17.78.51l-.76.77q-.16-.22-.42-.33-.26-.1-.53-.1-.3 0-.55.11-.24.1-.42.3-.18.2-.28.45-.1.26-.1.57 0 .32.1.59.1.26.27.45.18.19.43.3.24.1.53.1.34 0 .6-.13.24-.14.4-.35l.78.74zm3.85-.9q0 .43-.15.75-.16.31-.41.52-.26.2-.58.3-.32.1-.67.1-.31 0-.6-.08t-.54-.23q-.23-.15-.4-.37-.17-.23-.25-.5l1.02-.31q.07.24.27.4.2.16.48.16.28 0 .49-.17.21-.18.21-.51 0-.2-.09-.35-.08-.14-.22-.22-.13-.08-.3-.11-.18-.04-.35-.04-.25 0-.57.06-.32.05-.57.15L8.9 5.7h2.87v.95H9.9l-.04.74.23-.03.24-.01q.35 0 .66.09.3.1.53.28.23.19.37.47.13.27.13.64z' aria-label='C5'/%3E%3C/svg%3E
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.5.20240730
+// @version     1.6.20240910
 // @author      wtflm
 // @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
@@ -55,8 +55,7 @@ if (site && !site.classList.contains("is-logged-in")) {
 	.then(html => {
 		const parser = new DOMParser();
 		const loginPage = parser.parseFromString(html, "text/html");
-		if (loginPage.querySelector(`form[action*="login/authenticate/concrete"]`)) {
-			console.log("Concrete CMS login page found.");
+≤			console.log("Concrete CMS login page found.");
 			const loginLink = document.createElement("a");
 			loginLink.innerHTML = `<img width="24" alt="Login" src="${GM.info.script.icon}"/>`;
 			loginLink.href = `${CCM_APPLICATION_URL}/index.php/login`;
@@ -295,3 +294,21 @@ Object.keys(features).find(key =>
 	&& features[key].code()
 	&& console.log(`${GM.info.script.name}: ${key} UserScript run.`)
 );
+
+/*
+let devStyle = document.createElement("style");
+devStyle.textContent = `
+	.ccm-toolbar-add::after {
+		content: attr(data-dimensions);
+		position: absolute;
+		top: 0;
+		right: 0;
+		translate: calc(100% + 1em) 50%;
+	}
+`;
+document.head.appendChild(devStyle);
+let dimensions = document.querySelector('.ccm-toolbar-add');
+addEventListener("resize", ev => {
+	dimensions.dataset.dimensions = innerWidth + "x" + innerHeight;
+});
+*/

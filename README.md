@@ -1,4 +1,4 @@
-# Concrete UI Tweaks
+# ![C5](c5-wtf-gradient-optimized.svg) WTF Concrete UI Tweaks
 User script for augmenting Concrete CMS development and administration.
 
 ## Requirements
@@ -12,6 +12,9 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.6.20240910
+- Supply in-house icon, disassociate from official Concrete CMS branding
+
 1.5.20240730
 - Added a thing that activates all the frame file paths on Concrete's debug stack trace page. Clicking on one copies the
 path to the system clipboard provided that your site is served over HTTPS. The paths are pruned of relative path prefix
@@ -37,5 +40,3 @@ distinction inside user script host extensions with the added benefit of giving 
 
 1.0.20230816
 - Initial release
-
-Lando logo is the property of [PortlandLabs](https://www.portlandlabs.com/) and is embedded in and used from the user script meta data block in order to keep things as lean and self-contained as possible.
