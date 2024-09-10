@@ -12,6 +12,9 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.7.20240910
+- Switch login icon to a more descriptive one from Google Material Symbols
+
 1.6.20240910
 - Supply in-house icon, disassociate from official Concrete CMS branding
 
@@ -40,3 +43,6 @@ distinction inside user script host extensions with the added benefit of giving 
 
 1.0.20230816
 - Initial release
+
+## Aknowledgements
+Uses [Google Material Symbols](https://fonts.google.com/icons) under the [Apache License Version 2.0](Google-Material-Symbols-LICENSE.txt).
