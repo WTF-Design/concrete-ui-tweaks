@@ -12,6 +12,9 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.9.0
+- Animate login button on hover to give some user feedback
+
 1.8.0
 - Use semantic versioning and improve login button environment detection
 
