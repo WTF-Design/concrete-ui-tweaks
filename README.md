@@ -51,4 +51,4 @@ distinction inside user script host extensions with the added benefit of giving 
 - Initial release
 
 ## Aknowledgements
-Uses [Google Material Symbols](https://fonts.google.com/icons) under the [Apache License Version 2.0](Google-Material-Symbols-LICENSE.txt).
+Uses [Google Material Symbols](https://fonts.google.com/icons) under the [Apache License Version 2.0](Google-Material-Symbols-LICENSE.txt) modified for animation.
