@@ -12,6 +12,9 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.10.0
+- Make Add-On changelogs less loud. H1s and H2s re-set to browser defaults over big and bold site theme headings. Also make path-based CSS injections introduce themselves via a comment line.
+
 1.9.0
 - Animate login button on hover to give some user feedback
 

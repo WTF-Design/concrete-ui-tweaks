@@ -4,7 +4,7 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.9.0
+// @version     1.10.0
 // @author      wtflm
 // @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
@@ -197,6 +197,7 @@ const features = {
 
 			const style = document.createElement(`style`);
 			style.textContent = `
+				/* ${GM.info.script.name}: ${this.description} */
 				table.ccm-search-results-table td {
 					vertical-align: top;
 				}
@@ -304,6 +305,7 @@ const features = {
 		code: function() {
 			let style = document.createElement("style");
 			style.textContent = `
+				/* ${GM.info.script.name}: ${this.description} */
 				#toc > .toc-list::before {
 					content: "Table of Contents";
 					display: block;
@@ -324,6 +326,26 @@ const features = {
 								content: none;
 							}
 						}
+					}
+				}
+			`;
+			document.head.appendChild(style);
+		},
+	},
+
+	"/dashboard/extend/update": {
+		description: "Make Add-On changelogs less loud",
+		enabled: true,
+		code: function() {
+			let style = document.createElement("style");
+			style.textContent = `
+				/* ${GM.info.script.name}: ${this.description} */
+				.ccm-marketplace-update-changelog {
+					h1 {
+						font-size: 2em;
+					}
+					h2 {
+						font-size: 1.5em;
 					}
 				}
 			`;
