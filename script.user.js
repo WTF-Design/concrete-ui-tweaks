@@ -4,7 +4,7 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.10.0
+// @version     1.10.1
 // @author      wtflm
 // @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
@@ -47,7 +47,7 @@ if (composer) {
 
 
 // Show a login button
-if (window.hasOwnProperty("CCM_APPLICATION_URL") && !window?.CCM_USER_REGISTERED) {
+if (window.hasOwnProperty("CCM_APPLICATION_URL") && !(window.CCM_USER_REGISTERED ?? document.documentElement.classList.contains("ccm-toolbar-visible"))) {
 	(function() {
 		// Check whether we're already on a login page.
 		if (/\/login/.test(location.pathname)) return false;
