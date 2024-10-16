@@ -4,7 +4,7 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.10.1
+// @version     1.11.0
 // @author      wtflm
 // @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
@@ -53,12 +53,12 @@ if (window.hasOwnProperty("CCM_APPLICATION_URL") && !(window.CCM_USER_REGISTERED
 		if (/\/login/.test(location.pathname)) return false;
 
 		fetch(`${CCM_APPLICATION_URL}/index.php/login`)
-		.then(response => response.text())
-		.then(html => {
-			console.log("Concrete CMS login page found.");
+		.then(response => {
 
-			const parser = new DOMParser();
-			const loginPage = parser.parseFromString(html, "text/html");
+			// Login page not found
+			if (!response.ok) return false;
+
+			console.log("Concrete CMS login page found.");
 
 			const loginIcon = `
 				<svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">

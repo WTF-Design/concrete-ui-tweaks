@@ -12,8 +12,11 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.11.0
+- Improve login page request code. We only need the response `ok`, not the content.
+
 1.10.1
-- Fix login state detection on Concrete5 8.x
+- Fix login state detection on concrete5 8.x
 
 1.10.0
 - Make Add-On changelogs less loud. H1s and H2s re-set to browser defaults over big and bold site theme headings. Also make path-based CSS injections introduce themselves via a comment line.
