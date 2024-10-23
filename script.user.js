@@ -4,7 +4,7 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.11.0
+// @version     1.12.0
 // @author      wtflm
 // @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
@@ -73,9 +73,14 @@ if (window.hasOwnProperty("CCM_APPLICATION_URL") && !(window.CCM_USER_REGISTERED
 									translate: -60% 0;
 								}
 							}
-							.loginLink g path {
-								animation: inee 1s linear infinite;
-								animation-play-state: paused;
+							.loginLink {
+								svg {
+									vertical-align: unset;
+								}
+								g path {
+									animation: inee 1s linear infinite;
+									animation-play-state: paused;
+								}
 							}
 						</style>
 					</defs>

@@ -12,6 +12,9 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.12.0
+- Fix login symbol vertical alignment where affected by site styles.
+
 1.11.0
 - Improve login page request code. We only need the response `ok`, not the content.
 
