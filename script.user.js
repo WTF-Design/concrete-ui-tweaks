@@ -4,7 +4,7 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.12.0
+// @version     1.13.0
 // @author      wtflm
 // @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
@@ -49,8 +49,11 @@ if (composer) {
 // Show a login button
 if (window.hasOwnProperty("CCM_APPLICATION_URL") && !(window.CCM_USER_REGISTERED ?? document.documentElement.classList.contains("ccm-toolbar-visible"))) {
 	(function() {
+
 		// Check whether we're already on a login page.
 		if (/\/login/.test(location.pathname)) return false;
+		if (document.getElementById("ccm_login_form")) return false;
+		if (document.getElementsByClassName("concrete-login-form").length) return false;
 
 		fetch(`${CCM_APPLICATION_URL}/index.php/login`)
 		.then(response => {

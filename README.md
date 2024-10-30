@@ -12,6 +12,9 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.13.0
+- More methods of detecting Concrete login pages
+
 1.12.0
 - Fix login symbol vertical alignment where affected by site styles.
 
