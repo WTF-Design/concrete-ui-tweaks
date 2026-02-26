@@ -12,6 +12,9 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.13.2.
+- Fix login button animation running continuously
+
 1.13.1
 - Normalize animation duration
 
