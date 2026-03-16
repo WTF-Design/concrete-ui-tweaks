@@ -12,7 +12,16 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
-1.13.2.
+1.14.0
+- Fix login button not being displayed when accessing a Concrete CMS site via a
+  non-canonical URL. The `fetch()` was blocked by CORS in that situation. Now
+  the current URL is used as basis for checking for the login page but its
+  actual URL used in the button is the canonical one. That makes the button more
+  available on whichever URL is the quickest for you to access but proceeding to
+  login steers you in the canonical URL which should lead to a smoother user
+  experience after the fact.
+
+1.13.2
 - Fix login button animation running continuously
 
 1.13.1

@@ -4,7 +4,7 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.13.2
+// @version     1.14.0
 // @author      wtflm
 // @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
@@ -55,7 +55,10 @@ if (window.hasOwnProperty("CCM_APPLICATION_URL") && !(window.CCM_USER_REGISTERED
 		if (document.getElementById("ccm_login_form")) return false;
 		if (document.getElementsByClassName("concrete-login-form").length) return false;
 
-		fetch(`${CCM_APPLICATION_URL}/index.php/login`)
+		let currentAppRoot = `${location.protocol}//${location.host}`;
+		let corsAppRoot = currentAppRoot == CCM_APPLICATION_URL ? CCM_APPLICATION_URL : currentAppRoot;
+
+		fetch(`${corsAppRoot}/index.php/login`)
 		.then(response => {
 
 			// Login page not found
