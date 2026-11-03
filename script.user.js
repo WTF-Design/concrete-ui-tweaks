@@ -4,7 +4,7 @@
 // @namespace   wtfdesign
 // @include     *
 // @grant       none
-// @version     1.14.0
+// @version     1.15.0
 // @author      wtflm
 // @description Concrete CMS Developer/Admin UI tweaks
 // ==/UserScript==
@@ -124,6 +124,30 @@ if (window.hasOwnProperty("CCM_APPLICATION_URL") && !(window.CCM_USER_REGISTERED
 			}, {once: true});
 		});
 	})();
+}
+
+
+if (document.documentElement.classList.contains("ccm-toolbar-visible")) {
+	const observer = new MutationObserver(() => {
+		if (document.documentElement.matches(`:has(#ccm-panel-detail-page-composer)`)) {
+			const slug = document.querySelector(`[data-composer-field="edit_url_slug"]`);
+			if (slug) {
+				slug.addEventListener("click", ev => {
+					document.querySelector(`[id$="[url_slug]"]`).value = document.querySelector(`[id$="[name]"]`).value
+						.trim()
+						.toLowerCase()
+						.replace(/[åä]/g, "a")
+						.replace(/ö/g, "o")
+						.replace(/[\W\?!.,\-]+/g, "-")
+						.replace(/^\W+/g, "")
+						.replace(/\W+$/g, "")
+					;
+				}, {once: true});
+			}
+		}
+	}).observe(document.documentElement, {
+		attributes: true,
+	});
 }
 
 

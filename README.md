@@ -12,6 +12,11 @@ User script for augmenting Concrete CMS development and administration.
 - May be documented at some point
 
 ## Changelog
+1.15.0: Add automatic slug generation when editing
+- similar to when creating new pages, when you edit an existing one and go
+  to edit the slug, the page name will be processed into a new slug. Handy
+  when translating pages based on original language copies.
+
 1.14.0
 - Fix login button not being displayed when accessing a Concrete CMS site via a
   non-canonical URL. The `fetch()` was blocked by CORS in that situation. Now
